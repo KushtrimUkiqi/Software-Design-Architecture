@@ -1,3 +1,3 @@
-# Software-Design-Architecture-homework1
+# Software-Design-Architecture
 
-Project participants : Talia Kastrati , Edin Jajaga ,Lirim Hamiti & Kushtrim Ukiq.
+Project participants : Talia Kastrati , Edin Jajaga ,Lirim Hamiti (191519) & Kushtrim Ukiq(191291).
