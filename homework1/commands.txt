@@ -1,0 +1,13 @@
+SwissHospitals <- all %>%
+filter(country == "Switzerland") %>%
+select(id,city,lon,lat,hospital_name,postcode,street) %>%
+rename(
+Id = id,
+City = city,
+Longitude = lon,
+Latitude =lat,
+Name = hospital_name,
+PostCode = postcode,
+Street = street
+)
+write.csv(SwissHospitals, "SwissHospitals.csv")
