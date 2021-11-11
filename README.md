@@ -2,8 +2,8 @@
 <img src="./findMyhospital.png">
 
 ## Project participants : 
-### Talia Kastrati  (      )
-### Edin Jajaga     (      )
+### Talia Kastrati  (191527)
+### Edin Jajaga     (181546)
 ### Lirim Hamiti    (191519) 
 ### Kushtrim Ukiq   (191291)
 
