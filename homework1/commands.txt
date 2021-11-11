@@ -1,5 +1,6 @@
-The data is taken from : <a href="https://gisco-services.ec.europa.eu/pub/healthcare/csv/all.csv"> https://gisco-services.ec.europa.eu/pub/healthcare/csv/all.csv</a>
+The data is taken from :  https://gisco-services.ec.europa.eu/pub/healthcare/csv/all.csv
 
+The data is filtered with R studio with the following commands:
 
 
 SwissHospitals <- all %>%
