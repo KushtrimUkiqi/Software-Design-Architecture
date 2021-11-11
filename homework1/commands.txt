@@ -1,3 +1,7 @@
+The data is taken from : <a href="https://gisco-services.ec.europa.eu/pub/healthcare/csv/all.csv"> https://gisco-services.ec.europa.eu/pub/healthcare/csv/all.csv</a>
+
+
+
 SwissHospitals <- all %>%
 filter(country == "Switzerland") %>%
 select(id,city,lon,lat,hospital_name,postcode,street) %>%
