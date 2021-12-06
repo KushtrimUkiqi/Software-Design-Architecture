@@ -1,0 +1,1 @@
+For the server side is used Spring Boot with Postgresql , as per the client side (view) html,css,javascript and bootstrap is used.

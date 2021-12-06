@@ -1,0 +1,115 @@
+#main
+{
+    margin-top: 10vh;
+    width: 100vw;
+    height: 90vh;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 4fr 5fr;
+    gap: 0;
+}
+
+#map
+{
+    grid-column: 1/2;
+    grid-row: 1;
+}
+
+#openstreetmap
+{
+    width: 100vw;
+    height: 40vh;
+}
+
+#hospital_list
+{
+    background-color: #599191;
+    height: 50vh;
+    width: 100vw;
+    grid-column: 1/2;
+    grid-row: 2;
+}
+
+#hospital_list  ul{
+    padding: 0 0.5vw;
+    list-style: none;
+    color: white;
+}
+
+#hospital_list ul li
+{
+    
+    border-bottom: 1px solid white;
+    width: 90vw;
+    margin: auto;
+    height: 6vh;
+}
+
+.navigation
+{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+button
+{
+    background-color: white;
+    width: 35vw;
+    height: 4vh;
+    border-radius: 8px;
+    color: #599191;
+}
+
+
+
+@media (min-width:500px){
+
+    /* #main
+    {
+        height: 90vh;
+    } */
+        
+
+    #map
+{
+    grid-row: 1/2;
+    grid-column: 1;
+    height: 90vh;
+
+    
+}
+
+
+#openstreetmap
+{
+    width: 66vw;
+    height: 90vh;
+}
+
+
+#hospital_list
+{
+    grid-row: 1;
+    grid-column: 2;
+    height: 90vh;
+    width: 34vw;
+}
+
+/* .navigation
+{
+    margin-top: 0;
+    padding: 0;
+    grid-row: 1;
+    grid-column: 2;
+    height: 2vh;
+    width: 30vw;
+} */
+
+
+
+#hospital_list ul li
+{
+    width: 30vw;
+}
+}

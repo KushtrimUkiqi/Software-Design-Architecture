@@ -1,0 +1,99 @@
+
+#offcanvasNavbar
+{
+  margin-top: -1vh;
+  background-color: #599191;
+}
+
+#logo_navbar
+{
+    height: 3vh;
+}
+
+.navbar_toggler
+{
+    height: 6vh;
+}
+
+.offcanvas-body
+{
+  padding-left: 5vw;
+  color: white;
+}
+
+
+ul li{
+  padding: 2vh 0 ;
+}
+
+#location_input
+{
+  width: 50vw;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.radius_selection_draggable
+{
+  width: 50vw;
+  height: 0.5vh;
+  border-radius: 2px;
+  background-color: white;
+}
+
+#language
+{
+  width: 50vw;
+}
+
+.languages > div
+{
+  width:8vw;
+  height: 4vh;
+  display: inline;
+}
+
+.languages
+{display: flex;
+justify-content: space-around;
+width: 50vw;}
+
+#emergency_call , #saved_places
+{
+  background-color: white;
+  width: 50vw;
+  border-radius: 8px;
+}
+
+#done
+{
+  width: 50vw;
+  margin: 7vh 0;
+  border-radius: 8px;
+  color: white;
+  background-color: #5E6574;
+}
+
+
+textarea:focus, input:focus , input{
+  outline: none;
+  border: none;
+}
+
+
+
+@media (min-width:500px)
+{
+  #location_input, #language , .languages, #emergency_call , #saved_places ,#done
+  {
+    width: 15vw;
+    height: 5vh;
+    border-color: white;
+    box-shadow: none;
+  }
+
+  .radius_selection_draggable
+  {
+    width: 15vw;
+  }
+}
