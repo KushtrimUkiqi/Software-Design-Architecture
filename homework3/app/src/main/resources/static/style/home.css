@@ -1,0 +1,202 @@
+#main
+{
+    margin-top: 10vh;
+    width: 100vw;
+    height: 90vh;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 2fr 1fr;
+}
+
+.main_typing
+{
+    grid-template-rows: 1fr 1fr !important;
+}
+
+
+#map
+{
+    grid-row: 1;
+    grid-column: 1/2;
+    width: 100vw;
+}
+
+#buttons_and_search
+{
+    padding: 3vh 0 ;
+    grid-row: 2;
+    grid-column: 1/2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons_and_search_typing
+{
+    justify-content: left !important;
+
+}
+
+#buttons_and_search > *
+{
+    margin: 1.5vh 0;
+}
+
+#search
+{
+    width:60vw;
+    height:5vh;
+}
+
+.biggerVh
+{
+    height:8vh !important;
+}
+
+#search_input
+{
+    width: 60vw;
+    height: 4vh;
+    color: white;
+    background-color: #599191;
+    border-radius: 7px;
+    text-align: center;
+    border: none;
+}
+
+#auto_suggestions
+{
+    list-style: none;
+    list-style-position: inside;
+    position: absolute;
+    margin-top: 1px;
+    width: 60vw;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    height: 28vh;
+    background-color:#599191;
+}
+
+.auto_suggestions_biggerVh
+{
+    height: 60vh !important;
+}
+#auto_suggestions li
+{
+    font-size: 0.7em;
+    padding: 1px;
+    border-bottom: 1px solid white;
+    margin-left: -15px;
+    display: flex;
+    height: 10vh;
+}
+
+
+#auto_suggestions a
+{
+    color: white;
+}
+
+#auto_suggestions a:hover
+{
+    color: rgb(225, 236, 231);
+}
+.none
+{
+    display: none;
+}
+
+
+
+#buttons_and_search button
+{
+    background-color: #599191;
+    width: 60vw;
+    height: 4vh;
+    color: white;
+    border-radius: 7px;
+    text-align: center;
+    border: none;
+}
+
+
+
+#buttons_and_search a
+{
+    color: white;
+}
+
+#buttons_and_search a:hover
+{
+    color: rgb(225, 236, 231);
+}
+
+::placeholder
+{
+    color: #599191;
+
+}
+
+
+/* For devices that screen size is wider than 768px  */
+@media (min-width:768px)
+{
+
+    #map
+    {
+        grid-row: 1/2;
+        grid-column: 1;
+        height: 90vh;
+        width: 66vw;
+        padding: 0.5vw;
+        border-right: 0.2vw solid cadetblue;
+    }
+
+    #buttons_and_search
+    {
+        grid-row: 1/2;
+        grid-column: 2;
+        justify-content: center;
+    }
+
+
+    #buttons_and_search > *
+    {
+        margin: 2vh 0;
+    }
+
+    #search
+    {
+        width:30vw;
+    }
+
+    #search_input
+    {
+        width: 30vw;
+    }
+
+    #auto_suggestions
+    {
+        width:30vw;
+    }
+
+    #auto_suggestions li
+    {
+        height: 5.5vh;
+        text-align: center;
+        align-content: center;
+    }
+
+    #buttons_and_search button
+    {
+        width: 30vw;
+    }
+}
+
+
+
+
+
+
+

@@ -1,0 +1,46 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a
+{
+  text-decoration: none;
+  color: inherit;
+}
+
+::placeholder
+{
+    color: white;
+
+}
+.modal{
+  margin-top: 10vh;
+}
+
+.modal_body
+{
+  color: #599191;
+  padding: 7vh  0;
+  text-align: center;
+}
+
+.modal-footer
+{
+  display: flex;
+  justify-content: center;
+}
+#modal_button
+{
+    background-color:#599191 ;
+    width: 50vw;
+    height: 4vh;
+    color: white;
+    border-radius: 7px;
+    text-align: center;
+    border: none;
+    
+    
+}
+
