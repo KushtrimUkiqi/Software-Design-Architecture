@@ -12,5 +12,7 @@
 ### Talia Kastrati  (191527)
 ### Edin Jajaga     (181546)
 ### Lirim Hamiti    (191519) 
+
+## Project lead :
 ### Kushtrim Ukiq   (191291)
 
