@@ -1,0 +1,432 @@
+@keyframes showSmoothly
+{
+    0% {
+        opacity: 0;
+    }
+
+    5%
+    {
+        opacity:0.1;
+    }
+
+    25%
+    {
+        opacity:0.25;
+    }
+
+    50%
+    {
+        opacity:0.5;
+    }
+
+
+    75%
+    {
+        opacity:0.75;
+    }
+    85%
+    {
+        opacity:0.85;
+    }
+
+    99%
+    {
+        opacity: 0.99;
+    }
+}
+
+
+
+
+#main
+{
+    margin-top: 8vh;
+    width: 100vw;
+    height: 90vh;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    /*need to be changed with 4fr 5fr when nearest hospitals list is used */
+    grid-template-rows: 2fr 1fr;
+}
+
+.main_typing
+{
+    grid-template-rows: 1fr 1fr !important;
+}
+
+
+#map
+{
+    animation:0.5s showSmoothly ease-in;
+    grid-row: 1;
+    grid-column: 1/2;
+    width: 100vw;
+}
+
+.smallerheight
+{
+    height: 40vh;
+}
+
+#buttons_and_search
+{
+    animation:0.5s showSmoothly ease-in;
+    padding: 3vh 0 ;
+    grid-row: 2;
+    grid-column: 1/2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons_and_search_typing
+{
+    justify-content: left !important;
+
+}
+
+#buttons_and_search > *
+{
+    margin: 1.5vh 0;
+}
+
+.searchInputButton
+{
+    width:60vw;
+    height:5vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search
+{
+    width:60vw;
+    height:5vh;
+}
+
+.searchInputButton button
+{
+    width:20vw;
+    height: 4vh;
+    background-color: #31394D ;
+    border-top-right-radius: 10px;
+    border-color:transparent;
+    color: white;
+}
+
+.biggerVh
+{
+    height:8vh !important;
+}
+
+#search_input
+{
+    width: 60vw;
+    height: 4vh;
+    color: rgb(255, 255, 255);
+    background-color: #599191;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    text-align: center;
+    border: none;
+}
+
+#search_input::placeholder
+{
+    opacity: 0.7;
+}
+
+#auto_suggestions
+{
+    list-style: none;
+    list-style-position: inside;
+    position: absolute;
+    margin-top: 1px;
+    width: 60vw;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    height: 28vh;
+    background-color:#599191;
+}
+
+.auto_suggestions_biggerVh
+{
+    height: 60vh !important;
+}
+#auto_suggestions li
+{
+    font-size: 0.7em;
+    padding: 1px;
+    border-bottom: 1px solid white;
+    margin-left: -15px;
+    display: flex;
+    height: 10vh;
+}
+
+
+#auto_suggestions a
+{
+    color: white;
+}
+
+#auto_suggestions a:hover
+{
+    color: rgb(225, 236, 231);
+}
+.none
+{
+    display: none;
+}
+
+.ibuttons
+{
+    background-color: #31394D;
+    width: 60vw;
+    height: 4vh;
+    color: white;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    text-align: center;
+    border: none;
+}
+
+.ibuttons:hover
+{
+    opacity: 0.9;
+}
+
+#buttons_and_search a
+{
+    color: white;
+}
+
+#buttons_and_search a:hover
+{
+    color: rgb(225, 236, 231);
+}
+
+::placeholder
+{
+    color: #599191;
+
+}
+
+
+
+
+/*for nearest hospitals list */
+
+.hospital_list
+{
+    background-color: #599191;
+    height: 50vh;
+    width: 100vw;
+    grid-column: 1/2;
+    grid-row: 2;
+    animation:0.5s showSmoothly ease-in;
+}
+
+#hospital_list{
+    padding: 0 0.5vw;
+    list-style: none;
+    color: white;
+    height: 38vh;
+}
+
+#hospital_list li
+{
+
+    list-style:none;
+    font-size: 15px;
+    animation:0.5s showSmoothly ease-in;
+    border-bottom: 1px solid white;
+    width: 100vw;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    padding: 0 1vw;
+    height: 9.5vh;
+}
+
+#hospital_list li a:hover
+{
+    color:#31394D;
+
+}
+
+
+.buttons_hospital_list
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1vh;
+    background-color: #31394D;
+}
+
+
+.buttons_hospital_list> button{
+    background-color: #599191;
+    border-color: #599191;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: white;
+    width: 20vw;
+
+}
+
+#dropdownMenuButton1 ,.buttons_hospital_list> button{
+    height: 5vh;
+}
+
+
+.manipulation
+{
+    display: flex;
+    justify-content: center;
+    margin: -10px;
+}
+
+.manipulation button
+{
+    background-color: #31394D;
+    width: 20vw;
+    border-color: transparent;
+    color: white;
+}
+
+.manipulation button:nth-child(1)
+{
+
+    border-top-left-radius: 10px;
+    margin-right:0.5vw;
+
+}
+
+
+.manipulation button:nth-child(2)
+{
+    border-bottom-right-radius: 10px;
+    margin-left: 0.5vw;
+
+}
+
+
+/*end*/
+
+
+/* For devices that screen size is wider than 768px  */
+@media (min-width: 992px)
+{
+
+    #map
+    {
+        grid-row: 1/2;
+        grid-column: 1;
+        height: 90vh;
+        width: 66vw;
+        padding: 0.5vw;
+        border-right: 0.2vw solid cadetblue;
+    }
+
+    #buttons_and_search
+    {
+        grid-row: 1/2;
+        grid-column: 2;
+        justify-content: center;
+    }
+
+
+    #buttons_and_search > *
+    {
+        margin: 2vh 0;
+    }
+    /*
+        <div id="search">
+        <div class="searchInputButton">
+          <input autocomplete="off" type="search" placeholder="Hospital name..."  id="search_input"><button>Search</button>
+        </div>
+        <ul id="auto_suggestions" class="none"></ul>
+    </div> */
+
+    #search
+    {
+        width:30vw;
+    }
+
+
+
+    .searchInputButton
+    {
+        width:30vw;
+    }
+
+    #search_input
+    {
+        width: 30vw;
+    }
+
+    .searchInputButton button
+    {
+        width:7vw;
+    }
+
+    #auto_suggestions
+    {
+        width:30vw;
+    }
+
+    #auto_suggestions li
+    {
+        height: 5.5vh;
+        text-align: center;
+        align-content: center;
+    }
+
+    .ibuttons
+    {
+        width: 20vw;
+    }
+
+    .hospital_list
+    {
+        height: 90vh;
+        width: 33vw;
+        grid-column: 2;
+        grid-row: 1/2;
+
+    }
+
+
+    #hospital_list
+    {
+        height: 76vh;
+    }
+    #hospital_list ul li
+    {
+
+        width: 30vw;
+
+    }
+
+
+
+    .manipulation button
+    {
+        margin: 1vh 0;
+        width: 10vw;
+    }
+
+
+
+
+}
+
+
+
+
+
+
+

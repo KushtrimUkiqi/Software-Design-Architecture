@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.telk.findmyhospital.FindmyhospitalApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 32.65 s - in com.telk.findmyhospital.FindmyhospitalApplicationTests

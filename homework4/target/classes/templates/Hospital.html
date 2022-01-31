@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="../style/home.css">
+    <link rel="shortcut icon" href="../images/logo_wnb.ico">
+    <meta charset="UTF-8">
+    <title>Hospital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tomik23/autocomplete@1.7.1/dist/css/autocomplete.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+          integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+          crossorigin="" />
+    <link rel="stylesheet" href="../style/navbarStyle.css">
+    <link rel="stylesheet" href="../style/hospital.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
+    <link rel="stylesheet" href="../style/global.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+
+</head>
+<body>
+
+
+
+<!--- NAVBAR - > css - @navbarStyle.css--->
+<nav class="navbar  fixed-top">
+    <div class="container-fluid">
+        <div class="cf">
+            <a class="navbar-brand" href="#">
+                <img id="logo_navbar" src="../images/logo.svg">
+            </a>
+
+            <img src="../images/navbar_toggler_0.svg" class="navbar_toggler" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" alt="">
+        </div>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel"></h5>
+                <img src="../images/navbar_toggler_1.svg" class="navbar_toggler" data-bs-dismiss="offcanvas" aria-label="Close" alt="">
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li >
+                        <label>Location</label>
+                        <br>
+                        <div class="auto-search-wrapper loupe">
+                            <input id="location_input" type="search" autocomplete="off">
+                        </div>
+                    </li>
+                    <li >
+                        <label >Select radius: <span id="radius"></span></label>
+                        <br>
+
+
+                        <!--                 <div class="field_to_be_dragged">-->
+                        <!--                   <img src="../images/draggable_object.png">-->
+                        <!--                 </div>-->
+                        <!--                 <div class="radius_selection_draggable">-->
+                        <!--                </div>-->
+
+                        <div class="range">
+                            <div class="sliderValue">
+                                <span id="sspan"></span>
+                            </div>
+                            <div class="field">
+                                <div class="value left">0</div>
+                                <input id="iinput" type="range" min="0" max="150" value="10" step="1">
+                                <div class="value right">150</div>
+
+                            </div>
+                        </div>
+
+                    </li>
+                    <li id="languages_list">
+                        <label id="language">Language</label>
+                        <div class="languages">
+                            <div class="english_language">EN</div>
+                            <!--                  <div class="german_language">DE</div>-->
+                            <!--                  <div class="french_language">FR</div>-->
+                            <!--                  <div class="italian_language">IT</div>-->
+                        </div>
+                    </li>
+                    <li>
+                        <button id="emergency_call">Emergency call</button>
+                    </li>
+                    <li>
+                        <button id="saved_places">Saved places</button>
+                    </li>
+                </ul>
+                <button id="done" data-bs-dismiss="offcanvas" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="getPosition()">Done</button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+<section id="main">
+    <div id="map">
+
+    </div>
+
+
+
+    <div class="hospital">
+        <div class="hospitalInfos">
+            <input class="none" id="hospitalId" th:value="${session.hospital.getId()}"/>
+            <input class="none" id="hospitalLat" th:value="${session.hospital.getLatitude()}"/>
+            <input class="none" id="hospitalLong" th:value="${session.hospital.getLongitude()}"/>
+            <div class="name">Name<span id="name" th:text="${session.hospital.getName()}"></span></div>
+            <div class="address">Address<span id="address" th:text="${session.hospital.getAddress()}"></span></div>
+            <div class="proximity">Proximity<span id="proximity"></span></div>
+            <div class="rating">Rating<span id="rating" th:text="${session.hospital.getRating()}"></span></div>
+
+        </div>
+
+
+
+        <div class="navigation_buttons">
+            <div class="rate">
+               <a href="#ratingSection"> <img src="../images/star.png"  onclick="rate()"></a>
+            </div>
+
+            <div class="showRoute">
+                <button id="showRoute" onclick="runDirection()">Show route</button>
+            </div>
+
+            <div class="home">
+                <a href="/"><img src="../images/home.png"></a>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="ratingSection" class="none" >
+    <divss class="container">
+        <div class="post">
+            <div class="text">Thanks for rating us!</div>
+        </div>
+        <div class="star-widget">
+            <input type="radio" value="5" name="rate"  id="rate-5">
+            <label for="rate-5" class="fas fa-star"></label>
+            <input type="radio"  value="4" name="rate" id="rate-4">
+            <label for="rate-4" class="fas fa-star"></label>
+            <input type="radio"  value="3" name="rate" id="rate-3">
+            <label for="rate-3" class="fas fa-star"></label>
+            <input type="radio" value="2" name="rate" id="rate-2">
+            <label for="rate-2" class="fas fa-star"></label>
+            <input type="radio"  value="1" name="rate" id="rate-1">
+            <label for="rate-1" class="fas fa-star"></label>
+            <form action="#">
+                <header></header>
+                <div class="textarea">
+                    <textarea id="comment" cols="30" placeholder="Describe your experience at this hospital.."></textarea>
+                </div>
+                <div class="btn">
+                    <button id="submitRating" type="button" onclick="postRate()">Rate</button>
+                </div>
+            </form>
+        </div>
+    </divss>
+</section>
+
+<div id="rate_link"></div>
+
+<footer>
+    <a href="/privacyPolicy">Privacy policy</a>
+</footer>
+
+<!--- MODAL css - > @global.css--->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal_body">
+                Your informations are saved
+            </div>
+            <div class="modal-footer">
+                <button id="modal_button"  data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+<script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=Dx1eOhif0Uf7iH5tXxF9AkzxA8nouC17"></script>
+<script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key=Dx1eOhif0Uf7iH5tXxF9AkzxA8nouC17"></script>
+<script src="../javascript/map-quest-routing.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="../javascript/navbar.js"></script>
+<!-- AXIOS JS CDN -->
+<script src="../javascript/node_modules/axios/dist/axios.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/tomik23/autocomplete@1.7.1/dist/js/autocomplete.min.js"></script>
+
+<script src="./github-corner.js"></script>
+
+<script>
+
+    distance();
+
+
+
+
+    function distance( )
+    {
+
+        let lat1 = localStorage.getItem("latitude");
+        let lon1 = localStorage.getItem("longitude");
+        let lat2 = Number.parseFloat(document.getElementById("hospitalLat").value);
+        let lon2 = Number.parseFloat(document.getElementById("hospitalLong").value);
+        var radlat1 = Math.PI * lat1/180;
+        var radlat2 = Math.PI * lat2/180;
+        var radlon1 = Math.PI * lon1/180;
+        var radlon2 = Math.PI * lon2/180;
+        var theta = lon1-lon2;
+        var radtheta = Math.PI * theta/180;
+        var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+        dist = Math.acos(dist);
+        dist = dist * 180/Math.PI;
+        dist = dist * 60 * 1.1515;
+        dist = dist/0.62137;
+        document.getElementById("proximity").innerHTML = dist.toFixed(2)+" km";
+    }
+
+
+
+    function rate()
+    {
+        let id = '#ratingSection';
+        document.getElementById("ratingSection").classList.remove('none');
+        // setTimeout(function(){ window.location.href = `/${rating}`; }, 1000);
+    }
+
+
+    function postRate()
+    {
+
+        let hId = Number.parseInt(document.getElementById("hospitalId").value);
+        let st = Number.parseInt(document.querySelector('input[name="rate"]:checked').value);
+        let cm = document.querySelector("#comment").value;
+
+
+        
+        axios.get(`/rate?stars=${st}&hospitalId=${hId}&comment=${cm}`).then(resp => console.log(resp)).catch(error =>  console.log(error));
+
+        const btn = document.querySelector("#submitRating");
+        const post = document.querySelector(".post");
+        const widget = document.querySelector(".star-widget");
+        const editBtn = document.querySelector(".edit");
+
+            widget.style.display = "none";
+            post.style.display = "block";
+            // editBtn.onclick = ()=>{
+            //     widget.style.display = "block";
+            //     post.style.display = "none";
+            // }
+
+    }
+
+
+
+    window.addEventListener("DOMContentLoaded", function () {
+        // autocomplete part
+        new Autocomplete("location_input", {
+            selectFirst: true,
+            insertToInput: true,
+            cache: true,
+            howManyCharacters: 2,
+            // onSearch
+            onSearch: ({ currentValue }) => {
+                // api
+                const api = `https://nominatim.openstreetmap.org/search?format=geojson&limit=5&city=${encodeURI(
+                    currentValue
+                )}`;
+
+
+                return new Promise((resolve) => {
+                    fetch(api)
+                        .then((response) => response.json())
+                        .then((data) => {
+                            resolve(data.features);
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        });
+                });
+            },
+
+            // nominatim GeoJSON format
+            onResults: ({ currentValue, matches, template }) => {
+                const regex = new RegExp(currentValue, "gi");
+
+                // if the result returns 0 we
+                // show the no results element
+                return matches === 0
+                    ? template
+                    : matches
+                        .map((element) => {
+                            return `
+                <li>
+                  <p>
+                    ${element.properties.display_name.replace(
+                                regex,
+                                (str) => `<b>${str}</b>`
+                            )}
+                  </p>
+                </li> `;
+                        })
+                        .join("");
+            },
+
+            onSubmit: ({ object }) => {
+                const { display_name } = object.properties;
+                const [lat, lng] = object.geometry.coordinates;
+
+                localStorage.setItem('latitude',lng);
+                localStorage.setItem('longitude',lat);
+                console.log(lng);
+                console.log(lat);
+
+            }
+
+
+        });
+
+
+
+
+
+    });
+
+
+
+    // function save(){
+    //   let hospital = {id: document.getElementById("id").innerHTML, name: document.getElementById("name").innerHTML }
+
+    //   let valueFromLocalStorage = localStorage.getItem("savedPlaces");
+    //   if(valueFromLocalStorage == null)
+    //   {
+    //     console.log(JSON.stringify([hospital]));
+    //     localStorage.setItem("savedPlaces",JSON.stringify([hospital]));
+    //     return;
+    //   }
+
+
+    //   let hospitals = JSON.parse(valueFromLocalStorage);
+
+    //   if(hospitals.length===10)
+    //   {
+    //     hospitals.shift();
+    //   }
+
+    //   hospitals.push(hospital);
+    //   localStorage.setItem("savedPlaces",JSON.stringify(hospitals));
+
+    // }
+</script>
+
+</body>
+</html>

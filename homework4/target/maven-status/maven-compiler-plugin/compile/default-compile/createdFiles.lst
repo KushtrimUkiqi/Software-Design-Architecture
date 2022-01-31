@@ -1,0 +1,15 @@
+com\telk\findmyhospital\web\controllers\NearestHospitalsController.class
+com\telk\findmyhospital\web\controllers\FindHospitalsController.class
+com\telk\findmyhospital\repository\RatingRepository.class
+com\telk\findmyhospital\FindmyhospitalApplication.class
+com\telk\findmyhospital\service\RatingService.class
+com\telk\findmyhospital\web\controllers\RatingController.class
+com\telk\findmyhospital\service\impl\HospitalServiceImpl.class
+com\telk\findmyhospital\models\Rating.class
+com\telk\findmyhospital\service\HospitalService.class
+com\telk\findmyhospital\repository\HospitalRepository.class
+com\telk\findmyhospital\web\controllers\PrivacyPolicyController.class
+com\telk\findmyhospital\service\impl\RatingServiceImpl.class
+com\telk\findmyhospital\models\Hospital.class
+com\telk\findmyhospital\web\controllers\HospitalController.class
+com\telk\findmyhospital\web\controllers\HomeController.class

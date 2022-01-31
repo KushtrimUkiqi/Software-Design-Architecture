@@ -1,0 +1,83 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+body
+{
+    overflow-x: hidden;
+}
+a
+{
+    text-decoration: none;
+    color: inherit;
+}
+
+button:hover
+{
+    opacity: 0.9;
+}
+
+ul li
+{
+    list-style: none;
+}
+
+.none
+{
+    display: none!important;
+}
+
+
+::placeholder
+{
+    color: white;
+
+}
+.modal{
+    margin-top: 10vh;
+}
+
+.modal_body
+{
+    color: #599191;
+    padding: 7vh  0;
+    text-align: center;
+}
+
+.modal-footer
+{
+    display: flex;
+    justify-content: center;
+}
+#modal_button
+{
+    background-color:#599191 ;
+    width: 50vw;
+    height: 4vh;
+    color: white;
+    border-radius: 7px;
+    text-align: center;
+    border: none;
+
+
+}
+
+
+footer
+{
+    height: 10vh;
+    width: 100vw;
+    background-color:#31394D;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer a:hover{
+    color:thistle;
+}
