@@ -1,11 +1,10 @@
 # Software Design and Architecture
-<img src="./findMyhospital.png">
+# <a href="http://findmyhospital.tk"><img src="./findMyhospital.png"></a>
+
   
 ##  LINKS TO PARTS OF THE PROJECT:
-
-<a href="https://www.figma.com/proto/rxVfJbYlJujUdEJ4NFtA21/find-my-hospital?page-id=0%3A1&node-id=6%3A5&viewport=241%2C48%2C0.09&scaling=scale-down&starting-point-node-id=6%3A5"  target="_blank">Graphical user interface mockup</a>
-
-
+<a href="http://findmyhospital.tk">Project hosted in cloud</a> <br>
+<a href="https://www.figma.com/proto/rxVfJbYlJujUdEJ4NFtA21/find-my-hospital?page-id=0%3A1&node-id=6%3A5&viewport=241%2C48%2C0.09&scaling=scale-down&starting-point-node-id=6%3A5"  target="_blank">Graphical user interface mockup</a> <br>
 <a href="https://drive.google.com/file/d/1uGfH4Ngvt8dZ3UGe4RONv7HzamHfmIKQ/view?usp=sharing"  target="_blank">Technical prototype video</a>
 
 ## Project participants : 
