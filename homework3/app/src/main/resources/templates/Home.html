@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="shortcut icon" href="../images/logo_wnb.ico">
+    <link rel="stylesheet" href="../style/loading.css">
+    <meta charset="UTF-8">
+    <title>HOME</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style/navbarStyle.css">
+    <link rel="stylesheet" href="../style/home.css">
+    <link rel="stylesheet" href="../style/global.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+
+</head>
+<body>
+  <!--- LOADING SPINNER - > css - @loading.css - javascript @ONLOAD JS FUNCTION --->
+    <div id="loading">
+        <img id="loading-image" src="../images/spinner.gif" alt="Loading..." />
+        loading <span>.</span><span>.</span><span>.</span>
+    </div>
+
+
+  <!--- NAVBAR - > css - @navbarStyle.css--->
+  <nav class="navbar  fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+              <img id="logo_navbar" src="../images/logo.svg">
+          </a>
+
+            <img src="../images/navbar_toggler_0.svg" class="navbar_toggler" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" alt="">
+
+
+
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel"></h5>
+           <img src="../images/navbar_toggler_1.svg" class="navbar_toggler" data-bs-dismiss="offcanvas" aria-label="Close" alt="">
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li >
+                  <label>Location</label>
+                  <br>
+                 <input id="location_input" type="text">
+                </li>
+                <li >
+                 <label >Select radius: <span id="radius"></span></label>
+                 <br>
+                 <div class="field_to_be_dragged">
+                   <img src="../images/draggable_object.png">
+                 </div>
+                 <div class="radius_selection_draggable">
+                </div>
+
+                </li>
+                <li id="languages_list">
+                  <label id="language">Language</label>
+                  <div class="languages">
+                    <div class="english_language">EN</div>
+                  <div class="german_language">DE</div>
+                  <div class="french_language">FR</div>
+                  <div class="italian_language">IT</div>
+                  </div>
+                </li>
+                <li>
+                  <button id="emergency_call">Emergency call</button>
+                </li>
+                <li>
+                  <button id="saved_places">Saved places</button>
+                </li>
+              </ul>
+              <button id="done" data-bs-dismiss="offcanvas" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Done</button>
+            </div>
+          </div>
+        </div>
+  </nav>
+
+  <!--- MAIN SECTION (MAP , BUTTONS) -> css - (@global.css,@home.css) --->
+  <section id="main">
+
+      <div id="map">
+      </div>
+
+
+      <div id="buttons_and_search">
+
+          <div id="search">
+              <input autocomplete="off" type="search" placeholder="Search"  id="search_input">
+              <ul id="auto_suggestions" class="none"></ul>
+          </div>
+          <button id="find_nearest_hospital" type="submit"> <a href="http://127.0.0.1:8080/hospitals" id="nearest_hospitals">Find nearest hospitals</a></button>
+          <button id="options" type="menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">Options</button>
+
+      </div>
+  </section>
+
+ <!--- MODAL css - > @global.css--->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal_body">
+        Your informations are saved
+      </div>
+      <div class="modal-footer">
+        <button id="modal_button"  data-bs-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+<!--- ONLOAD JS FUNCTION --->
+    <script>
+    window.onload = function(){
+     setTimeout(()=> {
+        document.getElementById("loading").style.display = "none" ;
+     }, 1200)}
+    </script>
+
+<!--- BOOTSTRAP CDN --->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<!--- LEAFLET JS CDN --->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+<!--- LEAFLET JS - javascript -> @lefleat-map-manipultion.js --->
+    <script src="../javascript/lefleat-map-manipultion.js"></script>
+
+    <script src="../javascript/node_modules/axios/dist/axios.js"></script>
+
+  <script>
+      var input = document.getElementById("search_input");
+      input.addEventListener("input", updateValue);
+
+      if(screen.width<=800)
+      {
+          input.addEventListener("focus",setSize);
+          input.addEventListener("blur",resetSize);
+      }
+
+      function resetSize(e)
+      {
+          e.target.classList.remove("biggerVh");
+          document.getElementById("auto_suggestions").classList.add("none");
+          document.getElementById("auto_suggestions").classList.remove("auto_suggestions_biggerVh");
+          document.getElementById("main").classList.remove("main_typing");
+          document.getElementById("find_nearest_hospital").classList.remove("none");
+          document.getElementById("options").classList.remove("none");
+          document.getElementById("buttons_and_search").classList.remove("buttons_and_search_typing");
+      }
+
+      function setSize(e)
+      {
+
+          e.target.classList.add("biggerVh");
+          document.getElementById("auto_suggestions").classList.add("auto_suggestions_biggerVh");
+          document.getElementById("main").classList.add("main_typing");
+          document.getElementById("find_nearest_hospital").classList.add("none");
+          document.getElementById("options").classList.add("none");
+          document.getElementById("buttons_and_search").classList.add("buttons_and_search_typing");
+      }
+
+
+      function updateValue(e) {
+
+
+
+          var ul = document.getElementById("auto_suggestions");
+
+          if(e.target.value !== "")
+          {
+              ul.classList.remove("none");
+
+          }
+
+
+          else
+          {
+              ul.classList.add("none");
+          }
+
+
+
+          axios.get(`http://127.0.0.1:8080/listHospitals?name=${e.target.value}`)
+              .then((response) => {
+                  console.log(response.data);
+                  var hospitals  = response.data;
+
+                  if(hospitals.length>=1)
+                  {
+                      // var marker1 = L.marker([hospitals[0].latitude,hospitals[0].longitude]).bindPopup("<b>" + hospitals[0].name + "<b/>").openPopup().addTo(map);
+                      // map.flyTo([hospitals[0].latitude,hospitals[0].longitude],11);
+
+                      var htmlOfUl = ``;
+
+                      console.log(hospitals.length);
+                      ul.innerHTML = `
+            <li><a href="http://127.0.0.1:8080/hospital?id=${hospitals[0].id}">${hospitals[0].name} , ${hospitals[0].postcode}</a></li>
+            <li><a href="http://127.0.0.1:8080/hospital?id=${hospitals[1].id}">${hospitals[1].name} , ${hospitals[1].postcode}</a></li>
+            <li><a href="http://127.0.0.1:8080/hospital?id=${hospitals[2].id}">${hospitals[2].name} , ${hospitals[2].postcode}</a></li>
+            <li><a href="http://127.0.0.1:8080/hospital?id=${hospitals[3].id}">${hospitals[3].name} , ${hospitals[3].postcode}</a></li>
+            <li><a href="http://127.0.0.1:8080/hospital?id=${hospitals[4].id}">${hospitals[4].name} , ${hospitals[4].postcode}</a></li>
+            <li><a href="http://127.0.0.1:8080/hospital?id=${hospitals[5].id}">${hospitals[5].name} , ${hospitals[5].postcode}</a></li>
+          `
+                  }
+              }).catch(error => console.log(error));
+      };
+
+
+
+  </script>
+
+
+  </body>
+</html>
